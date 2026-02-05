@@ -77,3 +77,47 @@ show databases;
 //
 7-Instalar o HeidiSQL
 {https://www.heidisql.com/download.php}
+8- configurar o acceso ao sudo sql por client externo{ 
+    sudo su
+    mysql -u root -p
+   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Word_numbers';
+Logar na base local com seu client e criar o schema
+}
+
+9- Baixar seu client HTTP de preferencia, me: Insomnia 
+
+10- instalação do Docker {
+    conferir se o docker esta instalado:
+        service docker.io status
+    uname -a
+    confere se o kernel suporta docker (3.0+)
+    
+    apt-get update
+    apt-get install -y docker.io
+    docker version
+}
+
+11- Insalar docker compose:
+https://docs.docker.com/compose/install
+sudo apt update
+sudo apt install docker-compose-plugin (DB)
+docker compose version
+
+12- Instalar Minikube (SOMENTE EM AMBIENTE DEV)
+tutorial usando kvm (mais rapido e nativo, não dependendo de virtualbox, maquinas sem kvm seguir instalação via virtual box){
+sudo apt update
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+
+sudo usermod -aG libvirt $(whoami)
+newgrp libvirt
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+minikube start --driver=kvm2
+
+minikube kubectl -- get pods
+
+minikube start --driver=kvm2
+kubectl get nodes
+}
